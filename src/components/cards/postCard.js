@@ -5,7 +5,14 @@ import colors from '../../globalStyles/colors';
 
 const PostCard = ({data, onPress}) => {
   return (
-    <Pressable onPress={onPress} style={styles.container}>
+    <Pressable
+      onPress={onPress}
+      style={({pressed}) => [
+        {
+          opacity: pressed ? 0.8 : 1,
+        },
+        styles.container,
+      ]}>
       {/* Title */}
       <Text style={styles.titleText} numberOfLines={2}>
         {data.title}
@@ -15,20 +22,14 @@ const PostCard = ({data, onPress}) => {
         {data.selftext.trim()}
       </Text>
       {/* User */}
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          borderColor: 'grey',
-          borderTopWidth: 1,
-        }}>
+      <View style={styles.user}>
         <Text
           style={[styles.text2, {color: colors.secondary}]}
           numberOfLines={1}>
           {`Posted by u/${data.author.trim()}`}
         </Text>
         <Text style={styles.text2}>
-          {`${moment(data.created).format('MMM, DD, YYYY')}`}
+          {`${moment(data.created).format('MMM DD, YYYY')}`}
         </Text>
       </View>
     </Pressable>
@@ -42,8 +43,8 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width * 0.9,
     height: Dimensions.get('window').height / 4,
     marginTop: '5%',
-    backgroundColor: 'white',
     shadowColor: '#000',
+    backgroundColor: 'white',
     shadowOffset: {
       width: 1,
       height: 1,
@@ -65,5 +66,11 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 14,
     fontWeight: '700',
+  },
+  user: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderColor: 'grey',
+    borderTopWidth: 1,
   },
 });

@@ -12,6 +12,7 @@ import getPostsFromReddit from '../apis/getPostsFromReddit';
 import {postsReducer} from '../redux/features/postsSlice';
 import HomeHeader from '../components/headers/homeHeader';
 import PostCard from '../components/cards/postCard';
+import colors from '../globalStyles/colors';
 
 const Home = ({navigation}) => {
   const {Posts, After} = useSelector(state => state.redditPosts); // All posts data is maintained in redux Posts State   // After is used as the anchor point to get the next slice of data
@@ -43,8 +44,8 @@ const Home = ({navigation}) => {
         )}
         onEndReached={() => setScrollCount(prev => prev + 1)}
         ListFooterComponent={() => (
-          <View style={{marginVertical: '5%'}}>
-            <ActivityIndicator color={'00a6ff'} size={'small'} />
+          <View style={{marginVertical: '10%'}}>
+            <ActivityIndicator color={'00a6ff'} size={'large'} />
           </View>
         )}
       />
@@ -57,6 +58,6 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.tertiary,
   },
 });
