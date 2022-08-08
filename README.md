@@ -20,6 +20,6 @@ All are explained below.
 ◉ Generate apk file  (Refer to: https://reactnative.dev/docs/signed-apk-android)
 ◉ Install install the apk on any android device.
 
-3) 3) Physical ios device
+3) Physical ios device
 ◉ Generate TestFlight (Refer to: https://reactnative.dev/docs/publishing-to-app-store)
 
